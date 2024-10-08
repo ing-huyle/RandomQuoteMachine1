@@ -14,15 +14,19 @@ const colors = [
   "#e74c3c"
 ];
 
+const generateRandomIndex = () => {
+  return Math.floor(Math.random() * colors.length);
+}
+
 export default function App() {
-  const [index, setIndex] = useState(Math.floor(Math.random() * colors.length));
+  const [index, setIndex] = useState(generateRandomIndex());
   const [quote, setQuote] = useState("Everything exists.");
   const [author, setAuthor] = useState("Huy");
 
   const handleClick = () => {
-    let i = Math.floor(Math.random() * colors.length);
+    let i = generateRandomIndex();
     while (i === index) {
-      i = Math.floor(Math.random() * colors.length);
+      i = generateRandomIndex();
     }
 
     setIndex(i);
@@ -49,7 +53,7 @@ export default function App() {
 
     const timerFetch = setTimeout(() => {
       fetchData();
-    }, 750);
+    }, 50); // ms value set based on observation
 
     const timerFade = setTimeout(() => {
       $("#text").removeClass("fade");

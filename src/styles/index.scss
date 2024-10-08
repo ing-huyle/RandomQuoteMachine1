@@ -18,3 +18,10 @@ body {
     border-radius: 4px;
     background-color: white;
 }
+
+@media (max-width: 450px) {
+  #root {
+    width: 95%;
+    padding: 25px 30px;
+  }
+}

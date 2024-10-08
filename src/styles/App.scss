@@ -68,3 +68,9 @@ svg {
     50% { opacity: 0; }
     100% { opacity: 1; }
 }
+
+@media (max-width: 450px) {
+  #text {
+    font-size: 1.4em;
+  }
+}
