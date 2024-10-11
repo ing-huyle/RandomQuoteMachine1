@@ -8,7 +8,7 @@ $transition: 1500ms ease-in-out;
 }
   
 #text::before {
-    font-family: "Font Awesome 6 Free";
+    font-family: 'Font Awesome 6 Free';
     content: '\f10d  ';
     font-weight: 900;
 }
@@ -21,7 +21,7 @@ $transition: 1500ms ease-in-out;
 }
   
 #author::before {
-    content: "- ";
+    content: '- ';
 }
 
 .btn-row {
