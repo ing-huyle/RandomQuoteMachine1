@@ -14,22 +14,21 @@ const colors = [
   '#e74c3c'
 ];
 
-const generateRandomIndex = () => {
-  return Math.floor(Math.random() * colors.length);
+const generateRandomColor = (excludeColor) => {
+  let newColor;
+  do {
+    newColor = colors[Math.floor(Math.random() * colors.length)];
+  } while (newColor === excludeColor);
+  return newColor;
 }
 
 const App = () => {
-  const [index, setIndex] = useState(generateRandomIndex());
+  const [color, setColor] = useState(generateRandomColor('#000000'));
   const [quote, setQuote] = useState('Everything exists.');
   const [author, setAuthor] = useState('Huy');
 
   const handleClick = () => {
-    let i = generateRandomIndex();
-    while (i === index) {
-      i = generateRandomIndex();
-    }
-
-    setIndex(i);
+    setColor(generateRandomColor(color));
   }
 
   const fetchData = async () =>{
@@ -39,7 +38,6 @@ const App = () => {
         headers: { 'X-Api-Key': `uuG8lwcXmp4I/mR0J2Yk6Q==0UX3cz7EFt25Afmj` }
       });
       const data = await response.json();
-      console.log(data);
       setQuote(data[0].quote);
       setAuthor(data[0].author);
     } catch (error) {
@@ -48,12 +46,11 @@ const App = () => {
   }
 
   useEffect(() => {
+    $('body').css('background-color', color);
     $('#text').addClass('fade');
     $('#author').addClass('fade');
-
-    const timerFetch = setTimeout(() => {
-      fetchData();
-    }, 50); // ms value set based on observation
+    
+    fetchData();
 
     const timerFade = setTimeout(() => {
       $('#text').removeClass('fade');
@@ -61,13 +58,9 @@ const App = () => {
     }, 1500);
 
     return () => {
-      clearTimeout(timerFetch);
       clearTimeout(timerFade);
     };
-  }, [index]);
-
-  let color = colors[index];
-  $('body').css('background-color', color);
+  }, [color]);
 
   return (
     <div id='quote-box'>
