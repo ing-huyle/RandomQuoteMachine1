@@ -18,7 +18,7 @@ const generateRandomIndex = () => {
   return Math.floor(Math.random() * colors.length);
 }
 
-export default function App() {
+const App = () => {
   const [index, setIndex] = useState(generateRandomIndex());
   const [quote, setQuote] = useState('Everything exists.');
   const [author, setAuthor] = useState('Huy');
@@ -84,3 +84,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
