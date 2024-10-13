@@ -31,7 +31,7 @@ const App = () => {
     setColor(generateRandomColor(color));
   }
 
-  const fetchData = async () =>{
+  const fetchQuote = async () =>{
     try {
       const response = await fetch('https://api.api-ninjas.com/v1/quotes', {
         method: 'GET',
@@ -50,7 +50,7 @@ const App = () => {
     $('#text').addClass('fade');
     $('#author').addClass('fade');
     
-    fetchData();
+    fetchQuote();
 
     const timerFade = setTimeout(() => {
       $('#text').removeClass('fade');
